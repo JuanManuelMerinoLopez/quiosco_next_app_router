@@ -9,7 +9,7 @@ export default function OrdersPage() {
     
   const url ='/admin/orders/api'
   const fetcher = () => fetch(url).then(res => res.json()).then(data => data)
-  const { data, error, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
+  const { data, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
     refreshInterval: 60000,
     revalidateOnFocus: false
   })  
@@ -19,7 +19,7 @@ export default function OrdersPage() {
     <>
         <Heading> Administrar Ordenes</Heading>
 
-        
+       
 
         {data.length ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-5">
